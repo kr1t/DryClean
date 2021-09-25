@@ -39,9 +39,6 @@ export default {
 
       if (liff.isLoggedIn()) {
         const profile = await liff.getProfile().catch((err) => console.error(err))
-
-        console.log(profile)
-
         await this.loadUser({
           userId: profile.userId,
           displayName: profile.displayName,

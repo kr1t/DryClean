@@ -7,6 +7,7 @@ import Dashboard from "../views/admin/Dashboard"
 import Categories from "../views/admin/Categories"
 import Sounds from "../views/admin/Sounds"
 import Products from "../views/admin/products/Products"
+import LineUsers from "../views/admin/lineUsers/LineUsers"
 
 import Register from "../views/line/register/register"
 
@@ -26,6 +27,7 @@ const routes = [
       { path: "sounds", component: Sounds },
       { path: "categories", component: Categories },
       { path: "products", component: Products },
+      { path: "lineUsers", component: LineUsers },
     ],
     meta: {
       requiresAuth: true,

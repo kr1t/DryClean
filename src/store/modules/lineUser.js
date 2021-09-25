@@ -1,4 +1,5 @@
 import { firestore } from "firebase"
+import { withCreateTimeStamp } from "@/utils/datetime"
 
 const collName = "LineUsers"
 
@@ -58,6 +59,9 @@ const items = {
     },
     async register({ commit, dispatch, state }, item) {
       item.line_user_id = state.currentUser.userId
+
+      item = withCreateTimeStamp(item)
+
       const docRef = await firestore()
         .collection(collName)
         .add(item)

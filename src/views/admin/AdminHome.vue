@@ -68,6 +68,8 @@ export default {
         title: "หมวดหมู่บริการ",
         icon: "mdi-folder-multiple",
       },
+
+      { path: "/lineUsers", title: "ลูกค้า", icon: "mdi-account" },
     ],
   }),
   created() {
