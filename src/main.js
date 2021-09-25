@@ -3,10 +3,13 @@ import App from "./App.vue"
 import * as firebase from "firebase"
 import router from "./router"
 import store from "./store"
+import mixin from "./mixin"
+
 import vuetify from "./plugins/vuetify"
 import { firestorePlugin } from "vuefire"
-
+import "./plugins"
 Vue.config.productionTip = false
+Vue.config.devtools = true
 
 Vue.use(firestorePlugin)
 
@@ -23,6 +26,8 @@ const configOptions = {
 firebase.initializeApp(configOptions)
 
 let app
+
+Vue.mixin(mixin)
 
 firebase.auth().onAuthStateChanged((user) => {
   store.dispatch("auth/fetchUser", user)

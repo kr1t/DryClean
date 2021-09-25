@@ -5,6 +5,7 @@ import sounds from "./modules/sounds"
 import products from "./modules/products"
 import categories from "./modules/categories"
 import root from "./modules/root"
+import lineUser from "./modules/lineUser"
 
 Vue.use(Vuex)
 
@@ -15,5 +16,6 @@ export default new Vuex.Store({
     sounds,
     products,
     root,
+    lineUser,
   },
 })
