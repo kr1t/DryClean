@@ -1,0 +1,21 @@
+[debug] [2021-09-25T20:19:02.816Z] ----------------------------------------------------------------------
+[debug] [2021-09-25T20:19:02.818Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-09-25T20:19:02.818Z] CLI Version:   9.18.0
+[debug] [2021-09-25T20:19:02.818Z] Platform:      darwin
+[debug] [2021-09-25T20:19:02.818Z] Node Version:  v14.17.5
+[debug] [2021-09-25T20:19:02.819Z] Time:          Sun Sep 26 2021 03:19:02 GMT+0700 (Indochina Time)
+[debug] [2021-09-25T20:19:02.819Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-09-25T20:19:02.825Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-09-25T20:19:02.825Z] > authorizing via signed-in user (armdonyang@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/arm/Documents/freence/DryClean/VueFirebasePanelApp
+
