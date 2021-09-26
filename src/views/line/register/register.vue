@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <div v-if="currentPage == 0">Loading ...</div>
     <div v-if="currentPage == 1">
       <div class="card p-4" v-if="lineUser">
         <div class="profile text-center">
@@ -70,9 +69,18 @@
       </div>
     </div>
     <div v-if="currentPage == 2">
-      ลงทะเบียนแล้ว
-
-      <pre>{{ lineUser }}</pre>
+      <div class="card p-4">
+        ขอบคุณ
+        <h3>
+          คุณ {{ lineUser.registerData.firstName }}
+          {{ lineUser.registerData.lastName }}
+        </h3>
+        สำหรับการลงทะเบียน
+        <hr />
+        <button class="btn btn-primary" @click="closeWindow()">
+          ปิดหน้าจอนี้
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -99,7 +107,9 @@ export default {
       register: `lineUser/register`,
     }),
     async createUser() {
+      this.loadingStart();
       await this.register(this.form);
+      this.loadingStop();
       this.currentPage = 2;
     },
   },

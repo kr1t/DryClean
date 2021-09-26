@@ -6,15 +6,22 @@ const categories = {
   namespaced: true,
   state: {
     categories: [],
+    idActive: "",
   },
   getters: {
-    getCategories: (state) => {
+    categories: (state) => {
       return state.categories
+    },
+    categoryActive: (state) => {
+      return state.categories.find((category) => category.id == state.idActive)
     },
   },
   mutations: {
     SET_CATEGORIES(state, categories) {
       state.categories = categories
+    },
+    SET_CATEGORY_ACTIVE(state, categoryActive) {
+      state.idActive = categoryActive
     },
     ADD_CATEGORY(state, category) {
       state.categories.push(category)
@@ -47,6 +54,32 @@ const categories = {
         return category
       })
       commit("SET_CATEGORIES", categories)
+    },
+    async loadCategoriesWithProducts({ commit, dispatch }) {
+      const querySnapshot = await firestore()
+        .collection(collName)
+        .get()
+      let category
+      let categories = querySnapshot.docs.map(function(doc) {
+        category = doc.data()
+        category.id = doc.id
+        return category
+      })
+
+      // Relation 1 To Many
+      await Promise.all(
+        categories.map(async (category) => {
+          category.products = await dispatch("products/loadItemsByCategoryId", category.id, {
+            root: true,
+          })
+          return category
+        })
+      )
+
+      commit("SET_CATEGORIES", categories)
+    },
+    setCategoryActive({ commit }, activeId) {
+      commit("SET_CATEGORY_ACTIVE", activeId)
     },
     async updateCategory({ commit }, payload) {
       await firestore()

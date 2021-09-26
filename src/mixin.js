@@ -51,5 +51,8 @@ export default {
       // await this.LineLiffInit(data)
       this.loadingStop()
     },
+    closeWindow() {
+      liff.closeWindow()
+    },
   },
 }

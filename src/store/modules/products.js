@@ -47,6 +47,21 @@ const items = {
       })
       commit("SET_ITEMS", items)
     },
+
+    // 1 to Many
+    async loadItemsByCategoryId(payload, categoryId) {
+      const querySnapshot = await firestore()
+        .collection(collName)
+        .where("category_id", "==", categoryId)
+        .get()
+      let item
+      let items = querySnapshot.docs.map(function(doc) {
+        item = doc.data()
+        item.id = doc.id
+        return item
+      })
+      return items
+    },
     async updateItem({ commit }, payload) {
       await firestore()
         .collection(collName)

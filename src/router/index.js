@@ -10,6 +10,7 @@ import Products from "../views/admin/products/Products"
 import LineUsers from "../views/admin/lineUsers/LineUsers"
 
 import Register from "../views/line/register/register"
+import Service from "../views/line/services/services"
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,7 @@ const routes = [
     children: [
       { path: "", redirect: { name: "register" } },
       { path: "register", component: Register, name: "register" },
+      { path: "services", component: Service, name: "services" },
     ],
   },
 ]
