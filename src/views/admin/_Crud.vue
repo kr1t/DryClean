@@ -200,7 +200,7 @@ export default {
     }),
     ...mapGetters({
       items: `${mainModule}/getItems`,
-      categories: "categories/getCategories",
+      categories: "categories/categories",
     }),
     formTitle() {
       return this.editedIndex === -1 ? "New Item" : "Edit Item";

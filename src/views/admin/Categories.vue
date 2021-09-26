@@ -59,6 +59,18 @@
                         >
                         </v-text-field>
                       </v-col>
+
+                      <v-col cols="12" sm="12" md="12">
+                        <v-select
+                          :items="types"
+                          v-model="editedItem.type"
+                          name="type"
+                          item-text="title"
+                          item-value="id"
+                          label="เลือกประเภท"
+                          solo
+                        ></v-select>
+                      </v-col>
                     </v-row>
                   </v-form>
                 </v-container>
@@ -119,6 +131,11 @@
           mdi-delete
         </v-icon>
       </template>
+
+      <template v-slot:[`item.type`]="{ item }">
+        {{ getTypeByID(item.type) }}
+      </template>
+
       <template v-slot:no-data>
         <v-btn color="primary" @click="initialize">Reset</v-btn>
       </template>
@@ -154,16 +171,29 @@ export default {
           value: "title",
         },
         { text: "รูปหมวดหมู่", value: "image" },
+        { text: "ประเภท", value: "type" },
         { text: "คำสั่ง", value: "actions", sortable: false },
+      ],
+      types: [
+        {
+          id: "n",
+          title: "ปกติ",
+        },
+        {
+          id: "g",
+          title: "แยกเพศ",
+        },
       ],
       editedIndex: -1,
       editedItem: {
         title: "",
         image: "",
+        type: "",
       },
       defaultItem: {
         title: "",
         image: "",
+        type: "",
       },
       titleRule: [(v) => !!v || "Category name is required"],
       imageRule: [
@@ -179,7 +209,7 @@ export default {
       loadCategories: "categories/loadCategories",
     }),
     ...mapGetters({
-      categories: "categories/getCategories",
+      categories: "categories/categories",
     }),
     formTitle() {
       return this.editedIndex === -1 ? "New Category" : "Edit Category";
@@ -202,6 +232,13 @@ export default {
       updateCategory: "categories/updateCategory",
       removeCategory: "categories/removeCategory",
     }),
+    getTypeByID(id) {
+      try {
+        return this.types.find((el) => el.id == id).title;
+      } catch {
+        return "-";
+      }
+    },
     async initialize() {
       this.loading = true;
       try {

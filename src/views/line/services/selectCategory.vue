@@ -37,10 +37,5 @@ export default {
       this.$emit("changePage", "selectProducts");
     },
   },
-  async created() {
-    this.loadingStart();
-    await this.loadCategoriesWithProducts();
-    this.loadingStop();
-  },
 };
 </script>

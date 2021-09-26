@@ -3,8 +3,10 @@
     <div class="p-4 text-center">
       <h1>เลือกบริการ</h1>
 
+      <button @click="$emit('changePage', 'selectCategory')">back</button>
+
       <!-- selectGenderActive -->
-      <div class="selectGenderActive">
+      <div class="selectGenderActive" v-if="categoryActive.type == 'g'">
         <button
           class="btn"
           :class="activeClassGender('all')"
@@ -31,20 +33,41 @@
       <!-- selectGenderActive -->
 
       <div class="productsContainer mt-4">
-        <div class="productsFemale" v-if="selectGender != 'm'">
-          <ProductItem
-            :title="`${categoryActive.title} (หญิง)`"
-            :products="getProductsByGender('f')"
-          />
-        </div>
-        <hr />
+        <!-- // PRODUCT GENDER -->
+        <div class="productsGender" v-if="categoryActive.type == 'g'">
+          <div class="productsFemale" v-if="selectGender != 'm'">
+            <ProductItem
+              :title="`${categoryActive.title} (หญิง)`"
+              :products="getProductsByGender('f')"
+              v-if="getProductsByGender('f').length"
+            />
+            <div v-else>ไม่พบบริการ {{ `${categoryActive.title} (หญิง)` }}</div>
+          </div>
+          <hr />
 
-        <div class="productsMale" v-if="selectGender != 'f'">
-          <ProductItem
-            :title="`${categoryActive.title} (ชาย)`"
-            :products="getProductsByGender('m')"
-          />
+          <div class="productsMale" v-if="selectGender != 'f'">
+            <ProductItem
+              :title="`${categoryActive.title} (ชาย)`"
+              :products="getProductsByGender('m')"
+              v-if="getProductsByGender('m').length"
+            />
+            <div v-else>ไม่พบบริการ {{ `${categoryActive.title} (หญิง)` }}</div>
+          </div>
         </div>
+        <!-- // PRODUCT GENDER -->
+
+        <!-- // PRODUCT NORMAL -->
+        <div class="productsNormal" v-if="categoryActive.type == 'n'">
+          <div class="productsNormalAll">
+            <ProductItem
+              :title="`${categoryActive.title}`"
+              :products="categoryActive.products"
+              v-if="categoryActive.products.length"
+            />
+            <div v-else>ไม่พบบริการ {{ `${categoryActive.title}` }}</div>
+          </div>
+        </div>
+        <!-- // PRODUCT NORMAL -->
       </div>
     </div>
   </div>

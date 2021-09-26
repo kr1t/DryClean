@@ -187,6 +187,10 @@ export default {
       },
       genders: [
         {
+          id: "n",
+          title: "ไม่มี",
+        },
+        {
           id: "m",
           title: "ชาย",
         },
@@ -213,7 +217,7 @@ export default {
     }),
     ...mapGetters({
       items: `${mainModuleName}/getItems`,
-      categories: "categories/getCategories",
+      categories: "categories/categories",
     }),
     formTitle() {
       return this.editedIndex === -1 ? "สร้าง บริการ" : "แก้ไข บริการ";
@@ -235,6 +239,7 @@ export default {
       updateItem: `${mainModuleName}/updateItem`,
       removeItem: `${mainModuleName}/removeItem`,
     }),
+
     getCategoryById: function (id) {
       let category = this.categories.filter((c) => c.id == id)[0];
       if (category === undefined) {

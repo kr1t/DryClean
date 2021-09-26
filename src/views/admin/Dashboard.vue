@@ -96,7 +96,7 @@ export default {
       loadSounds: "sounds/loadSounds",
     }),
     ...mapGetters({
-      categories: "categories/getCategories",
+      categories: "categories/categories",
       sounds: "products/getItems",
     }),
     groups() {

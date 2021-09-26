@@ -124,7 +124,7 @@ export default {
     }),
     ...mapGetters({
       items: `${mainModuleName}/getItems`,
-      categories: "categories/getCategories",
+      categories: "categories/categories",
     }),
     formTitle() {
       return this.editedIndex === -1 ? "สร้าง บริการ" : "แก้ไข บริการ";
