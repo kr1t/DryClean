@@ -51,7 +51,7 @@
               :products="getProductsByGender('m')"
               v-if="getProductsByGender('m').length"
             />
-            <div v-else>ไม่พบบริการ {{ `${categoryActive.title} (หญิง)` }}</div>
+            <div v-else>ไม่พบบริการ {{ `${categoryActive.title} (ชาย)` }}</div>
           </div>
         </div>
         <!-- // PRODUCT GENDER -->
